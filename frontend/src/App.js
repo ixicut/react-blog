@@ -2,6 +2,7 @@ import './App.css';
 import Article from './components/Article/Article';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
 
@@ -16,7 +17,10 @@ function App() {
   }, [article]);
 
   return (
-    <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+    <div className="App"> 
+    <NavBar></NavBar>
+     <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+    </div>
   );
 }
 

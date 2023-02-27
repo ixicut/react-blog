@@ -1,0 +1,50 @@
+article {
+  background-color: white;
+  border: 1px solid #388e3c;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 5px #888888;
+  transition: all 0.3s ease-in-out;
+}
+
+.top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #388e3c;
+}
+
+article:hover {
+  transform: scale(1.01);
+  /* zoom in effect on hover */
+}
+
+article h3 {
+  color: #388e3c;
+  /* dark green heading */
+  font-size: 20px;
+  margin-top: 0;
+}
+
+article h5 {
+  color: #388e3c;
+  /* dark green heading */
+  font-size: 14px;
+  margin-top: 0;
+}
+
+article p {
+  line-height: 1.5;
+}
+
+article a {
+  display: block;
+  text-align: right;
+  color: #388e3c;
+  /* dark green link */
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+}

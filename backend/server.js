@@ -1,11 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
-app.get('/article', (req, res) => {
+app.use(cors());
+app.use(express.json({ type: "/" }));
+
+app.get(``, (req, res) => {
   const article = {
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    author: 'John Doe',
-    publicationDate: '2022-02-25'
+    id: 1,
+    title: 'About salo',
+    author: 'Kabanchik',
+    content: 'Salo to ahyenna shtyka. Realno zaebis, smakota sho pizdec. Im kozen den.',
+    date: '2023-7-2'
   };
 
   res.json(article);

@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const {Pool} = require('pg');
+const { Pool } = require('pg');
+const bodyParser = require('body-parser');
+
 const app = express();
 app.use(cors());
 app.use(express.json({ type: "/" }));
+app.use(bodyParser.json());
 
 const pool = new Pool({
   user: 'postgres',
@@ -13,19 +16,32 @@ const pool = new Pool({
   port: 5432
 });
 
-  app.get(``,async (req, res) => {
-    try {
-      const client = await pool.connect();
-      const data = await client.query('SELECT * FROM articles');
-      res.send(data.rows);
-      client.release();
-    } catch (exception) {
-      console.error(exception);
-      res.send('Error ' + exception);
-    }
-  });
+app.get(``, async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query('SELECT * FROM articles');
+    res.send(data.rows);
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
 
+app.post('', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const { title, author, content, date } = req.body;
 
+    const data = await client.query('INSERT INTO articles (title, author, content, date) VALUES ($1, $2, $3, $4)',
+      [title, author, content, date]);
+
+      res.status(201).json({ message: `Article with id ${data.fields} created successfully` });
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
 
 app.listen(3001, () => {
   console.log('Server listening on port 3001');

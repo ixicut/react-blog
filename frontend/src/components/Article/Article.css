@@ -1,50 +1,50 @@
-/* Main article container */
-.article {
-    background-color: #B4C424;
-    padding: 5vh 0;
-    margin: 0 auto;
-    max-width: 800px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
+article {
+  background-color: white;
+  border: 1px solid #388e3c;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 5px #888888;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Article header */
-.article-header {
-    text-align: center;
-    margin-bottom: 30px;
+.top-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #388e3c;
 }
 
-/* Article title */
-.article-title {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 0;
+article:hover {
+  transform: scale(1.01);
+  /* zoom in effect on hover */
 }
 
-/* Article author */
-.article-author {
-    font-size: 18px;
-    color: #666;
-    margin: 10px 0;
+article h3 {
+  color: #388e3c;
+  /* dark green heading */
+  font-size: 20px;
+  margin-top: 0;
 }
 
-/* Article content */
-.article-content {
-    line-height: 1.5;
-    font-size: 20px;
-    padding-left: 10%;
-    margin-bottom: 5%;
+article h5 {
+  color: #388e3c;
+  /* dark green heading */
+  font-size: 14px;
+  margin-top: 0;
 }
 
-/* Article date */
-.article-date {
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 30px;
+article p {
+  line-height: 1.5;
 }
 
-/* Article footer */
-.article-footer {
-    text-align: center;
+article a {
+  display: block;
+  text-align: right;
+  color: #388e3c;
+  /* dark green link */
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
 }

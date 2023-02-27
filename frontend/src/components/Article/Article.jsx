@@ -3,16 +3,12 @@ import React from 'react';
 
 const Article = (article) => {
   return (
-    <div className="article">
-      <div className="article-header">
-        <h1 className="article-title">{article.title}</h1>
-        <div className="article-author">{article.author}</div>
-        <div className="article-date">{article.date}</div>
-      </div>
-      <div className="article-content">
-        <p>{article.content}</p>
-      </div>
-    </div>
+    <article>
+      <span class="top-right">{article.date}</span>
+      <h3>{article.title}</h3>
+      <h5>{article.author}</h5>
+      <p>{article.content}</p>
+    </article>
   );
 }
 

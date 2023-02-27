@@ -3,13 +3,13 @@ import React from 'react';
 
 const Article = (article) => {
   return (
-    <div class="article">
-      <div class="article-header">
-        <h1 class="article-title">{article.title}</h1>
-        <div class="article-author">{article.author}</div>
-        <div class="article-date">{article.date}</div>
+    <div className="article">
+      <div className="article-header">
+        <h1 className="article-title">{article.title}</h1>
+        <div className="article-author">{article.author}</div>
+        <div className="article-date">{article.date}</div>
       </div>
-      <div class="article-content">
+      <div className="article-content">
         <p>{article.content}</p>
       </div>
     </div>

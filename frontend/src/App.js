@@ -1,11 +1,22 @@
 import './App.css';
+import Article from './components/Article/Article';
+import { retrieveArticle } from './service/Service';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [article, setArticle] = useState({title: 'SALO'});
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await retrieveArticle();
+      setArticle(data);
+    }
+    fetchData();
+  }, [article]);
+
   return (
-    <div className="App"> 
-    <h1>Test header</h1>
-    <h1>salo</h1>
-    </div>
+    <Article title={article.title} author={article.author} content={article.content} date={article.date} />
   );
 }
 

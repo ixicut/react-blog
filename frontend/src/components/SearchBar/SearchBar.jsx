@@ -5,7 +5,7 @@ const SearchBar = () => {
         <form class="search-form">
                 <input type="text" class="search-box" placeholder="Search"></input>
                 <button type="submit" class="search-btn">
-                    <i class="fa fa-search"></i>
+                    <img src="search.svg" alt="srch"></img>
                 </button>
             </form>
     );

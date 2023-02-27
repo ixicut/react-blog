@@ -28,8 +28,23 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
   }
   
   .search-btn i {
     color: green;
+  }
+
+  .search-btn:hover {
+    background-color: #c6cdc2;
+  }
+  
+  .search-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px #a2a6a2;
+  }
+  
+  .search-btn:active {
+    transform: scale(0.95);
+    background-color: #8e9490;
   }

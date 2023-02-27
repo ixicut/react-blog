@@ -25,6 +25,11 @@
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-link:hover {
+    color: #d0cdcdc3;
   }
 
   .logo {

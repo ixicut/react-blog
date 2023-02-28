@@ -7,6 +7,8 @@ aside {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+  border: 1px solid #388e3c;
+  flex-basis: 20%;
 }
 
 .side-menu-title {
@@ -14,7 +16,7 @@ aside {
   margin-bottom: 10px;
 }
 
-ul {
+.side-ul {
   padding-left: 20px;
 }
 
@@ -41,31 +43,4 @@ aside::before {
 
 aside:hover::before {
   left: 0;
-}
-
-li:nth-child(1) {
-  animation: slide-in 0.5s ease-in-out forwards 0.3s;
-}
-
-li:nth-child(2) {
-  animation: slide-in 0.5s ease-in-out forwards 0.4s;
-}
-
-li:nth-child(3) {
-  animation: slide-in 0.5s ease-in-out forwards 0.5s;
-}
-
-li:nth-child(4) {
-  animation: slide-in 0.5s ease-in-out forwards 0.6s;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
 }

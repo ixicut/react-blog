@@ -18,19 +18,16 @@ article {
 
 article:hover {
   transform: scale(1.01);
-  /* zoom in effect on hover */
 }
 
 article h3 {
   color: #388e3c;
-  /* dark green heading */
   font-size: 20px;
   margin-top: 0;
 }
 
 article h5 {
   color: #388e3c;
-  /* dark green heading */
   font-size: 14px;
   margin-top: 0;
 }
@@ -43,12 +40,11 @@ article a {
   display: block;
   text-align: right;
   color: #388e3c;
-  /* dark green link */
   font-weight: bold;
   text-decoration: none;
   margin-top: 10px;
 }
 
 section {
-	flex-basis: 70%;
+	flex-basis: 73%;
 }

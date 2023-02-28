@@ -18,13 +18,16 @@ ul {
   padding-left: 20px;
 }
 
-a {
+.cat-link {
   color: green;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
 
-/* Animation */
+.cat-link:hover {
+  color: #d0cdcdc3;
+}
+
 aside::before {
   content: '';
   position: absolute;
@@ -32,7 +35,7 @@ aside::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(217, 212, 212, 0.2);
   transition: all 0.3s ease-in-out;
 }
 

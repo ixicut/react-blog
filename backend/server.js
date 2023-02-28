@@ -54,7 +54,23 @@ app.delete('/:id', async (req, res) => {
     } else {
       res.status(404).json({ message: 'Article not found' });
     }
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
 
+app.put('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { title, author, content } = req.body;
+    const client = await pool.connect();
+    const data = await client.query('UPDATE articles SET title = $1, author = $2, content = $3 WHERE id = $4', [
+      title, author, content, id
+    ]);
+    res.status(201).json({ message: `Article with id ${id} updated` });
+    client.release();
   } catch (exception) {
     console.error(exception);
     res.send('Error ' + exception);

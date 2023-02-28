@@ -4,6 +4,7 @@ import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import SideMenu from './components/SideMenu/SideMenu';
+import Main from './components/Main/Main';
 
 function App() {
 
@@ -20,10 +21,7 @@ function App() {
   return (
     <div>
       <NavBar></NavBar>
-      <main>
-      <Article title={article.title} author={article.author} content={article.content} date={article.date} />
-      <SideMenu></SideMenu>
-      </main>
+      <Main article={article}></Main>
     </div>
   );
 }

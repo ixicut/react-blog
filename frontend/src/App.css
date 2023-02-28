@@ -37,13 +37,6 @@
   }
 }
 
-main {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	padding: 20px;
-}
-
 li:nth-child(1) {
   animation: slide-in 0.5s ease-in-out forwards 0.3s;
 }

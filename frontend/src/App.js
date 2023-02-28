@@ -3,6 +3,7 @@ import Article from './components/Article/Article';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
+import SideMenu from './components/SideMenu/SideMenu';
 
 function App() {
 
@@ -19,7 +20,10 @@ function App() {
   return (
     <div>
       <NavBar></NavBar>
+      <main>
       <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+      <SideMenu></SideMenu>
+      </main>
     </div>
   );
 }

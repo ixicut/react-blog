@@ -3,6 +3,9 @@ import Article from './components/Article/Article';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
+import SideMenu from './components/SideMenu/SideMenu';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -19,7 +22,8 @@ function App() {
   return (
     <div>
       <NavBar></NavBar>
-      <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+      <Main article={article}></Main>
+      <Footer></Footer>
     </div>
   );
 }

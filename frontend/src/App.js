@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import SideMenu from './components/SideMenu/SideMenu';
 import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <div>
       <NavBar></NavBar>
       <Main article={article}></Main>
+      <Footer></Footer>
     </div>
   );
 }

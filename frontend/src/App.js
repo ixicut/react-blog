@@ -3,6 +3,7 @@ import Article from './components/Article/Article';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           </div>
         ))
       }
+      <Footer></Footer>
     </div>
   );
 }

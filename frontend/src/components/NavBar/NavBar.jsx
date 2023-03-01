@@ -5,10 +5,12 @@ const NavBar = () => {
     return (
         <nav class="navbar">
             <ul class="navbar-nav">
+                <li>
                 <a class="logo nav-link" href='/'>
                 <img src='blog.svg' class = "logo-embed" alt="logo"></img>
                 React Blog
                 </a>
+                </li>
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
             </ul>

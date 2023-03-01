@@ -6,7 +6,7 @@ const Main = ({ article }) => {
     return (
         <main>
             <Article title={article.title} author={article.author} content={article.content} date={article.date} />
-            <SideMenu></SideMenu>
+            <div><SideMenu></SideMenu></div>
         </main>
     );
 }

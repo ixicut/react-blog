@@ -3,13 +3,11 @@ import Article from './components/Article/Article';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
-import SideMenu from './components/SideMenu/SideMenu';
-import Main from './components/Main/Main';
 import Footer from './components/Footer/Footer';
 
 function App() {
 
-  const [article, setArticle] = useState({ title: 'SALO' });
+  const [articles, setArticle] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,12 +15,18 @@ function App() {
       setArticle(data);
     }
     fetchData();
-  }, [article]);
+  }, [articles]);
 
   return (
     <div>
       <NavBar></NavBar>
-      <Main article={article}></Main>
+      {
+        articles.map(article => (
+          <div key={article.id}>
+            <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+          </div>
+        ))
+      }
       <Footer></Footer>
     </div>
   );

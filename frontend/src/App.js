@@ -6,7 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 
 function App() {
 
-  const [article, setArticle] = useState({ title: 'SALO' });
+  const [articles, setArticle] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -14,12 +14,18 @@ function App() {
       setArticle(data);
     }
     fetchData();
-  }, [article]);
+  }, [articles]);
 
   return (
     <div>
       <NavBar></NavBar>
-      <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+      {
+        articles.map(article => (
+          <div key={article.id}>
+            <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+          </div>
+        ))
+      }
     </div>
   );
 }

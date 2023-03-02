@@ -1,9 +1,9 @@
 import './App.css';
-import Article from './components/Article/Article';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
+import Main from './components/Main/Main';
 
 function App() {
 
@@ -20,13 +20,7 @@ function App() {
   return (
     <div>
       <NavBar></NavBar>
-      {
-        articles.map(article => (
-          <div key={article.id}>
-            <Article title={article.title} author={article.author} content={article.content} date={article.date} />
-          </div>
-        ))
-      }
+      <Main articles={articles}></Main>
       <Footer></Footer>
     </div>
   );

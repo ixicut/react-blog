@@ -1,11 +1,11 @@
-import Article from '../Article/Article';
+import ArticleList from '../ArticleList/ArticleList';
 import SideMenu from '../SideMenu/SideMenu';
 import './Main.css';
 
-const Main = ({ article }) => {
+const Main = ({ articles }) => {
     return (
         <main>
-            <Article title={article.title} author={article.author} content={article.content} date={article.date} />
+            <ArticleList articles={articles}></ArticleList>
             <div><SideMenu></SideMenu></div>
         </main>
     );

@@ -23,12 +23,7 @@ function App() {
   }, [articles]);
 
   return (
-    <>
-      <Routes>
-        <Route path="" element={<Main articles={articles} />} />
-        <Route path="/add-article" element={<AddArticle />} />
-      </Routes>
-    </>
+    <Main articles={articles} />
   );
 }
 

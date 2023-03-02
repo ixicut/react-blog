@@ -2,7 +2,7 @@ import NavBar from "../NavBar/NavBar";
 import Body from "../Body/Body";
 import Footer from "../Footer/Footer";
 
-const Main = (articles) => {
+const Main = ({articles}) => {
     return (
         <>
             <NavBar></NavBar>

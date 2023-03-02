@@ -1,3 +1,5 @@
+import "./AddArticle.css"
+
 const AddArticle = () => {
     return (
         <form >

@@ -1,13 +1,14 @@
-import ArticleList from '../ArticleList/ArticleList';
-import SideMenu from '../SideMenu/SideMenu';
-import './Main.css';
+import NavBar from "../NavBar/NavBar";
+import Body from "../Body/Body";
+import Footer from "../Footer/Footer";
 
-const Main = ({ articles }) => {
+const Main = (articles) => {
     return (
-        <main>
-            <ArticleList articles={articles}></ArticleList>
-            <div><SideMenu></SideMenu></div>
-        </main>
+        <>
+            <NavBar></NavBar>
+            <Body articles={articles}></Body>
+            <Footer></Footer>
+        </>
     );
 }
 

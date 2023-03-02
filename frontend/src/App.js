@@ -1,8 +1,13 @@
 import './App.css';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
-import NavBar from './components/NavBar/NavBar';
-import Footer from './components/Footer/Footer';
+import {
+  Route,
+  Router,
+  Routes,
+  Link
+} from 'react-router-dom'
+import AddArticle from './components/AddArticle/AddArticle';
 import Main from './components/Main/Main';
 
 function App() {
@@ -18,11 +23,12 @@ function App() {
   }, [articles]);
 
   return (
-    <div>
-      <NavBar></NavBar>
-      <Main articles={articles}></Main>
-      <Footer></Footer>
-    </div>
+    <>
+      <Routes>
+        <Route path="" element={<Main articles={articles} />} />
+        <Route path="/add-article" element={<AddArticle />} />
+      </Routes>
+    </>
   );
 }
 

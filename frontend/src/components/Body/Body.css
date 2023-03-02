@@ -1,0 +1,7 @@
+main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 20px;
+	min-height: calc(100vh - 290px);
+}

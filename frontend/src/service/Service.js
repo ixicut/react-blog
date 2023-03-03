@@ -8,11 +8,14 @@ export async function retrieveArticle() {
 }
 
 export async function addArticle(article) {
-  const response = await fetch(`http://localhost:3001`, {
+  const response = await fetch('http://localhost:3001', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: article
   });
-
+  console.log(article);
   const body = await response.text();
   const message = body === "" ? {} : JSON.parse(body);
   return message;
@@ -27,7 +30,7 @@ export async function deleteArticle(id) {
   return message;
 }
 
-export async function updateArticle(id, article) {
+export async function updateArticle(id, { article }) {
   const response = await fetch(`http://localhost:3001/${id}`, {
     method: 'PUT',
     body: article

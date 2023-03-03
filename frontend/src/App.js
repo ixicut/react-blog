@@ -18,7 +18,7 @@ function App() {
       setArticle(data);
     }
     fetchData();
-  }, [articles]);
+  }, []);
 
   return (
     <Routes>

@@ -1,4 +1,4 @@
-aside {
+/* aside {
   background-color: white;
   color: green;
   padding: 20px;
@@ -43,4 +43,4 @@ aside::before {
 
 aside:hover::before {
   left: 0;
-}
+} */

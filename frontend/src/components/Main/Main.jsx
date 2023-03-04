@@ -1,13 +1,12 @@
-import Article from '../Article/Article';
-import SideMenu from '../SideMenu/SideMenu';
-import './Main.css';
+import NavBar from "../NavBar/NavBar";
+import Body from "../Body/Body";
 
-const Main = ({ article }) => {
+const Main = ({articles}) => {
     return (
-        <main>
-            <Article title={article.title} author={article.author} content={article.content} date={article.date} />
-            <div><SideMenu></SideMenu></div>
-        </main>
+        <>
+            <NavBar></NavBar>
+            <Body articles={articles}></Body>
+        </>
     );
 }
 

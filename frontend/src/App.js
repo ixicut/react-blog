@@ -1,34 +1,31 @@
 import './App.css';
-import Article from './components/Article/Article';
 import { retrieveArticle } from './service/Service';
 import { useEffect, useState } from 'react';
-import NavBar from './components/NavBar/NavBar';
-import Footer from './components/Footer/Footer';
+import {
+  Route,
+  Routes,
+} from 'react-router-dom'
+import AddArticle from './components/AddArticle/AddArticle';
+import Main from './components/Main/Main';
 
 function App() {
-
   const [articles, setArticle] = useState([]);
 
+  async function fetchData() {
+    const data = await retrieveArticle();
+    setArticle(data);
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const data = await retrieveArticle();
-      setArticle(data);
-    }
     fetchData();
-  }, [articles]);
+  }, []);
 
   return (
-    <div>
-      <NavBar></NavBar>
-      {
-        articles.map(article => (
-          <div key={article.id}>
-            <Article title={article.title} author={article.author} content={article.content} date={article.date} />
-          </div>
-        ))
-      }
-      <Footer></Footer>
-    </div>
+    <Routes>
+      <Route exact path="/" element={<Main articles={articles} />} />
+      <Route path="/add-article" element={<AddArticle />} />
+    </Routes>
+
   );
 }
 

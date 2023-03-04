@@ -33,6 +33,11 @@ app.post('', async (req, res) => {
     const client = await pool.connect();
     const { title, author, content, date } = req.body;
 
+    if(title.trim().length === 0 || author.trim().length === 0 || content.trim().length === 0){
+       res.status(400).json({message: 'Fields cannot be empty'}); 
+       return;
+    }
+
     const data = await client.query('INSERT INTO articles (title, author, content, date) VALUES ($1, $2, $3, $4)',
       [title, author, content, date]);
 

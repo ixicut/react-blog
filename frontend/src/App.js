@@ -9,21 +9,21 @@ import AddArticle from './components/AddArticle/AddArticle';
 import Main from './components/Main/Main';
 
 function App() {
-
   const [articles, setArticle] = useState([]);
 
+  async function fetchData() {
+    const data = await retrieveArticle();
+    setArticle(data);
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const data = await retrieveArticle();
-      setArticle(data);
-    }
     fetchData();
   }, []);
 
   return (
     <Routes>
       <Route exact path="/" element={<Main articles={articles} />} />
-      <Route path="/add-article" element={<AddArticle/>}/>
+      <Route path="/add-article" element={<AddArticle />} />
     </Routes>
 
   );

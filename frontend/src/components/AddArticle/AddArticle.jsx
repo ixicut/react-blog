@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddArticle = () => {
-    const navigate = useNavigate();
+    const history = useNavigate();
 
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -30,6 +30,7 @@ const AddArticle = () => {
     }
 
     const saveArticle = async (event) => {
+        event.preventDefault();
         console.log('popa');
         await addArticle(JSON.stringify({
             title: title.toString(),
@@ -37,22 +38,24 @@ const AddArticle = () => {
             content: content.toString(),
             date: getCurrentDate()
         }));
-        navigate('/');
+        history('/');
     }
 
     return (
         <form onSubmit={saveArticle}>
             <label>
                 Заголовок:
-                <input type="text" value={title} onChange={e => { setTitle(e.target.value) }} />
+                <input type="text" value={title} required pattern=".{3,30}" title="Мінімум 3 максимум 30 символів"
+                    onChange={e => { setTitle(e.target.value) }} />
             </label>
             <label>
                 Автор:
-                <input type="text" value={author} onChange={e => { setAuthor(e.target.value) }} />
+                <input type="text" value={author} required pattern=".{3,30}" title="Мінімум 3 максимум 30 символів"
+                    onChange={e => { setAuthor(e.target.value) }} />
             </label>
             <label>
                 Контент:
-                <textarea value={content} onChange={e => { setContent(e.target.value) }} />
+                <textarea value={content} required pattern=".{3}" onChange={e => { setContent(e.target.value) }} />
             </label>
             <button type="submit">Створити статтю</button>
         </form>

@@ -21,11 +21,12 @@ function App() {
   }, []);
 
   return (
+    <div>
     <Routes>
       <Route exact path="/" element={<Main articles={articles}/>} />
       <Route path="/add-article" element={<AddArticle />} />
     </Routes>
-
+    </div>
   );
 }
 

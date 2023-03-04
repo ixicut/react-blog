@@ -1,3 +1,15 @@
+.footer-theme {
+	background-color: green;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.footer-bottom-theme {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
 /* footer {
 	background-color: green;
 	color: #fff;

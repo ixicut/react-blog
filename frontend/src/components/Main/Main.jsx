@@ -7,8 +7,8 @@ const Main = ({articles}) => {
     return (
         <>
             <NavBar></NavBar>
-            <Body articles={articles}></Body>           
-        </>
+            <Body articles={articles}></Body>
+        </>     
     );
 }
 

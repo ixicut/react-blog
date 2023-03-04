@@ -15,7 +15,7 @@ const Article = (article) => {
           <p class="card-text">{article.content}</p>
         </div>
         <div class="card-footer bg-transparent">
-          <a href="#" class="btn btn-success">Read more</a>
+          <a href={article.id} class="btn btn-success">Read more</a>
         </div>
       </div>
     </div>

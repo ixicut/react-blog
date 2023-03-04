@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
+    "react-dom": "^18.2.0",
     "react-native-web": "^0.18.12",
     "react-navigation": "^4.4.4"
   }

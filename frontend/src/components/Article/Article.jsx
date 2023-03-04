@@ -1,5 +1,6 @@
 import "./Article.css"
 import React from 'react';
+import '../../bootstrap.min.css';
 
 const Article = (article) => {
   return (
@@ -7,7 +8,7 @@ const Article = (article) => {
     <div key={article.id} class="col-md-6 col-lg-3 mb-4 d-flex">
       <div class="card">
         <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="..."></img>
-        <div class="card-body" style="height: 193px; overflow: hidden;">
+        <div class="card-body acticle-size">
           <h5 class="card-title">{article.title}</h5>
           <h6 class="card-title">{article.date}</h6>
           <h6 class="card-title">{article.author}</h6>

@@ -22,7 +22,7 @@ function App() {
 
   return (
     <Routes>
-      <Route exact path="/" element={<Main articles={articles} />} />
+      <Route exact path="/" element={<Main articles={articles}/>} />
       <Route path="/add-article" element={<AddArticle />} />
     </Routes>
 

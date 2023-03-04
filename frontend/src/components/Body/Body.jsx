@@ -1,6 +1,7 @@
 import ArticleList from '../ArticleList/ArticleList';
 import SideMenu from '../SideMenu/SideMenu';
 import './Body.css';
+import '../../bootstrap.min.css';
 
 const Body = ({ articles }) => {
     return (

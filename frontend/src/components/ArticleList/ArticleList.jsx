@@ -1,4 +1,5 @@
 import Article from "../Article/Article";
+import '../../bootstrap.min.css';
 
 const ArticleList = ({ articles }) => {
     return (
@@ -11,7 +12,7 @@ const ArticleList = ({ articles }) => {
             <div class="row">
                 {
                     articles.map(article => (
-                        <Article article = {article}/>
+                        <Article id={article.id} title={article.title} author={article.author} content={article.content} date={article.date}/>
                     ))
                 }
             </div>

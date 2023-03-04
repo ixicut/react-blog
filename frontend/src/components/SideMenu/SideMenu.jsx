@@ -1,16 +1,24 @@
+import '../../bootstrap.min.css';
 import './SideMenu.css';
 
 const SideMenu = () => {
     return (
-        <aside>
-            <h2 class = "side-menu-title">Categories</h2>
-            <ul class = "side-ul">    
-                <li><a class = "cat-link" href="#">Category 1</a></li>
-                <li><a class = "cat-link" href="#">Category 2</a></li>
-                <li><a class = "cat-link" href="#">Category 3</a></li>
-                <li><a class = "cat-link" href="#">Category 4</a></li>
-            </ul>
-        </aside>
+        <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="position-sticky pt-3">
+                    <h5 class="text-uppercase mr-1 ">Categories</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
     );
 }
 

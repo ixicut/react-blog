@@ -1,4 +1,12 @@
-footer {
+.footer-theme {
+	background-color: green;
+}
+
+.footer-bottom-theme {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* footer {
 	background-color: green;
 	color: #fff;
 	text-align: center;
@@ -49,4 +57,4 @@ footer {
 	color: #fff;
 	padding: 10px 0;
 	text-align: center;
-  }
+  } */

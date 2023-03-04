@@ -1,13 +1,17 @@
 import ArticleList from '../ArticleList/ArticleList';
 import SideMenu from '../SideMenu/SideMenu';
 import './Body.css';
+import '../../bootstrap.min.css';
+import Footer from '../Footer/Footer';
 
 const Body = ({ articles }) => {
     return (
-        <main>
-            <ArticleList articles={articles}></ArticleList>
-            <div><SideMenu></SideMenu></div>
-        </main>
+        <div class="container-fluid">
+            <div class="row">
+                <SideMenu></SideMenu>
+                <ArticleList articles={articles}></ArticleList>
+            </div>
+        </div>
     );
 }
 

@@ -1,31 +1,37 @@
 import './Footer.css';
+import '../../bootstrap.min.css';
+import '../../index.css'
 
 const Footer = () => {
     return (
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <h2>About Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div class="footer-section contact">
-                    <h2>Contact Us</h2>
-                    <p>Email: info@reactblog.com</p>
-                    <p>Phone: +1 234 567 8901</p>
-                    <p>Address: 123 Main Street, New York, NY 10001</p>
-                </div>
-                <div class="footer-section social-media">
-                    <h2>Follow Us</h2>
-                    <ul class="social-media-icons">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    </ul>
+        <footer class="text-center text-lg-start footer-theme mt-auto">
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase text-white">Footer Content</h5>
+                        <p class = "text-white">Some text goes here.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase text-white">Links</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#" class="text-white">Link 1</a></li>
+                            <li><a href="#" class="text-white">Link 2</a></li>
+                            <li><a href="#" class="text-white">Link 3</a></li>
+                            <li><a href="#" class="text-white">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase text-white">Contact</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#" class="text-white">Email</a></li>
+                            <li><a href="#" class="text-white">Phone</a></li>
+                            <li><a href="#" class="text-white">Address</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 React Blog. All rights reserved.</p>
+            <div class="text-center p-3 footer-bottom-theme text-white">
+                © 2023 React Blog. All rights reserved.
             </div>
         </footer>
     );

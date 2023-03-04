@@ -1,0 +1,16 @@
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.background {
+    background-color: #c8e6c9;;
+}
+
+
+
+
+
+

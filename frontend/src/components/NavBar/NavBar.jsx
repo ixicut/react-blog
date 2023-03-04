@@ -25,8 +25,10 @@ const NavBar = () => {
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
-                    </ul>
+                    </ul>                   
                     <SearchBar></SearchBar>
+                    <div class = "r-p"></div>
+                    <button class="btn btn-light">Login</button>                 
                 </div>
             </div>
         </nav>

@@ -1,4 +1,8 @@
-.navbar {
+.navbar-theme {
+  background-color: green;
+}
+
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,4 +49,4 @@
 
   .logo-embed {
     padding-right: 10px;
-  }
+  } */

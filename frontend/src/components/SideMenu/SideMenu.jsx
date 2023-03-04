@@ -5,7 +5,10 @@ const SideMenu = () => {
     return (
         <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="position-sticky pt-3">
-                    <h5 class="text-uppercase mr-1">Categories</h5>
+                    <div class = "raindbow-shimmer-text">
+                    <h5 class="text-uppercase mr-1 ">Categories</h5>
+                    </div>
+
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Dashboard</a>

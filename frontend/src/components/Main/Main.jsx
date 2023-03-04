@@ -6,7 +6,7 @@ import './Main.css';
 
 const Main = ({articles}) => {
     return (
-        <div class = "wrapper">
+        <div class = "wrapper background">
             <NavBar></NavBar>
             <Body articles={articles}></Body>
             <Footer></Footer> 

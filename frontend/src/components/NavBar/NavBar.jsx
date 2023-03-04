@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar';
 
 const NavBar = () => {
     return (
-        <nav class="navbar navbar-expand-lg sticky-top navbar-light navbar-theme">
+        <nav class="navbar navbar-expand-lg sticky-top navbar-dark justify-content-between navbar-theme">
             <div class="container-fluid">
                 <a class="navbar-brand logo" href='/'>
                     <img src='blog.svg' class="logo-embed" alt="logo"></img>
@@ -15,7 +15,7 @@ const NavBar = () => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Home</a>
                         </li>

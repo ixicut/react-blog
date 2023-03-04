@@ -10,7 +10,6 @@ const Body = ({ articles }) => {
             <div class="row">
                 <SideMenu></SideMenu>
                 <ArticleList articles={articles}></ArticleList>
-                <Footer></Footer> 
             </div>
         </div>
     );

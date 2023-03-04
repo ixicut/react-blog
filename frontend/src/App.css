@@ -9,7 +9,6 @@
 }
 
 .raindbow-shimmer-text {
-  font-size: 2em;
   font-weight: bold;
   background: linear-gradient(45deg, #f00, #f80, #ff0, #8f0, #0f0, #0f8, #00f, #80f, #f0f, #f08, #f00);
   background-size: 200%;

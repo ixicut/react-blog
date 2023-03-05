@@ -2,6 +2,7 @@ import "./AddArticle.css"
 import { addArticle } from "../../service/Service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../../bootstrap.min.css';
 
 const AddArticle = () => {
     const history = useNavigate();

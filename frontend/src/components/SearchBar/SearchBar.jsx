@@ -1,4 +1,5 @@
 import './SearchBar.css';
+import '../../bootstrap.min.css';
 
 const SearchBar = () => {
     return (

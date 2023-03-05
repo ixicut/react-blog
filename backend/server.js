@@ -16,7 +16,8 @@ const pool = new Pool({
   port: 5432
 });
 
-app.get(``, async (req, res) => {
+// ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
+app.get('/articles', async (req, res) => {
   try {
     const client = await pool.connect();
     const data = await client.query('SELECT * FROM articles');
@@ -28,7 +29,7 @@ app.get(``, async (req, res) => {
   }
 });
 
-app.post('', async (req, res) => {
+app.post('/articles', async (req, res) => {
   try {
     const client = await pool.connect();
     const { title, author, content, date } = req.body;
@@ -49,7 +50,7 @@ app.post('', async (req, res) => {
   }
 });
 
-app.delete('/:id', async (req, res) => {
+app.delete('/articles/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const client = await pool.connect();
@@ -66,7 +67,7 @@ app.delete('/:id', async (req, res) => {
   }
 });
 
-app.put('/:id', async (req, res) => {
+app.put('/articles/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const { title, author, content } = req.body;
@@ -75,6 +76,57 @@ app.put('/:id', async (req, res) => {
       title, author, content, id
     ]);
     res.status(201).json({ message: `Article with id ${id} updated` });
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
+//CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES 
+
+app.get(`/categories`, async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query('SELECT * FROM categories');
+    res.send(data.rows);
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
+app.post('/categories', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const { title } = req.body;
+
+    if(title.trim().length === 0){
+       res.status(400).json({message: 'Fields cannot be empty'}); 
+       return;
+    }
+
+    const data = await client.query('INSERT INTO categories (title) VALUES ($1)', [title]);
+
+    res.status(201).json({ message: `Category with id ${data.fields} created successfully` });
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
+app.delete('/categories/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const client = await pool.connect();
+    const data = await client.query('DELETE FROM categories WHERE id = $1', [id]);
+    if (data.rowCount === 1) {
+      res.status(204).json();
+    } else {
+      res.status(404).json({ message: 'Article not found' });
+    }
     client.release();
   } catch (exception) {
     console.error(exception);

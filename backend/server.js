@@ -17,7 +17,7 @@ const pool = new Pool({
 });
 
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
-app.get(``, async (req, res) => {
+app.get('/articles', async (req, res) => {
   try {
     const client = await pool.connect();
     const data = await client.query('SELECT * FROM articles');
@@ -29,7 +29,7 @@ app.get(``, async (req, res) => {
   }
 });
 
-app.post('', async (req, res) => {
+app.post('/articles', async (req, res) => {
   try {
     const client = await pool.connect();
     const { title, author, content, date } = req.body;
@@ -50,7 +50,7 @@ app.post('', async (req, res) => {
   }
 });
 
-app.delete('/:id', async (req, res) => {
+app.delete('/articles/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const client = await pool.connect();
@@ -67,7 +67,7 @@ app.delete('/:id', async (req, res) => {
   }
 });
 
-app.put('/:id', async (req, res) => {
+app.put('/articles/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const { title, author, content } = req.body;

@@ -85,7 +85,7 @@ app.put('/:id', async (req, res) => {
 
 //CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES 
 
-app.get(``, async (req, res) => {
+app.get(`/categories`, async (req, res) => {
   try {
     const client = await pool.connect();
     const data = await client.query('SELECT * FROM categories');
@@ -97,7 +97,7 @@ app.get(``, async (req, res) => {
   }
 });
 
-app.post('', async (req, res) => {
+app.post('/categories', async (req, res) => {
   try {
     const client = await pool.connect();
     const { title } = req.body;

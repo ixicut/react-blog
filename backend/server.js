@@ -16,6 +16,7 @@ const pool = new Pool({
   port: 5432
 });
 
+// ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
 app.get(``, async (req, res) => {
   try {
     const client = await pool.connect();
@@ -75,6 +76,40 @@ app.put('/:id', async (req, res) => {
       title, author, content, id
     ]);
     res.status(201).json({ message: `Article with id ${id} updated` });
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
+//CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES 
+
+app.get(``, async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query('SELECT * FROM categories');
+    res.send(data.rows);
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
+app.post('', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const { title } = req.body;
+
+    if(title.trim().length === 0){
+       res.status(400).json({message: 'Fields cannot be empty'}); 
+       return;
+    }
+
+    const data = await client.query('INSERT INTO categories (title) VALUES ($1)', [title]);
+
+    res.status(201).json({ message: `Category with id ${data.fields} created successfully` });
     client.release();
   } catch (exception) {
     console.error(exception);

@@ -117,6 +117,23 @@ app.post('/categories', async (req, res) => {
   }
 });
 
+app.delete('/categories/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const client = await pool.connect();
+    const data = await client.query('DELETE FROM categories WHERE id = $1', [id]);
+    if (data.rowCount === 1) {
+      res.status(204).json();
+    } else {
+      res.status(404).json({ message: 'Article not found' });
+    }
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
 app.listen(3001, () => {
   console.log('Server listening on port 3001');
 });

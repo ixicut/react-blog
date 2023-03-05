@@ -65,3 +65,12 @@ export async function addCategory(category) {
   const message = body === "" ? {} : JSON.parse(body);
   return message;
 }
+
+export async function deleteCategory(id) {
+  const response = await fetch(`http://localhost:3001/categories/${id}`, {
+    method: 'DELETE'
+  });
+  const body = await response.text();
+  const message = body === "" ? {} : JSON.parse(body);
+  return message;
+}

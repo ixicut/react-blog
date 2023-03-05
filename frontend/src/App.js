@@ -24,7 +24,7 @@ function App() {
     <div>
     <Routes>
       <Route exact path="/" element={<Main articles={articles}/>} />
-      <Route path="/add-article" element={<AddArticle />} />
+      <Route path="/add-article" element={<AddArticle onSave={fetchData} />} />
     </Routes>
     </div>
   );

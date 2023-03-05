@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../../bootstrap.min.css';
 
-const AddArticle = () => {
+const AddArticle = (props) => {
     const history = useNavigate();
 
     const [title, setTitle] = useState('');
@@ -39,6 +39,7 @@ const AddArticle = () => {
             content: content.toString(),
             date: getCurrentDate()
         }));
+        props.onSave();
         history('/');
     }
 

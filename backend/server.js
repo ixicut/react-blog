@@ -16,11 +16,17 @@ const pool = new Pool({
   port: 5432
 });
 
+const PAGE_LIMIT = 4;
+
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
 app.get('/articles', async (req, res) => {
   try {
     const client = await pool.connect();
-    const data = await client.query('SELECT * FROM articles');
+    let { offset } = req.query;
+
+    if(!Number.isInteger(parseInt(offset))) offset = 0;
+
+    const data = await client.query(`SELECT * FROM articles offset ${offset*PAGE_LIMIT} limit ${PAGE_LIMIT}`);
     res.send(data.rows);
     client.release();
   } catch (exception) {

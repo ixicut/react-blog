@@ -1,0 +1,20 @@
+.read-btn {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .read-btn:active {
+    background-color: #8e9490;
+  }
+  
+  .read-btn:hover {
+    background: linear-gradient(45deg, #f00, #f80, #ff0, #8f0, #0f0, #0f8, #00f, #80f, #f0f, #f08, #f00);
+    background-size: 200%;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: shimmer 10s linear infinite;
+  }
+  
+  .acticle-size {
+    height: 239px; 
+    overflow: hidden;
+  }

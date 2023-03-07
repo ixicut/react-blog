@@ -35,14 +35,27 @@ app.get('/articles', async (req, res) => {
   }
 });
 
+app.get('/articles/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const client = await pool.connect();
+    const data = await client.query('SELECT * FROM articles WHERE id = $1', [id]);
+    res.status(200).json(data.rows[0]);
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
 app.post('/articles', async (req, res) => {
   try {
     const client = await pool.connect();
     const { title, author, content, date } = req.body;
 
-    if(title.trim().length === 0 || author.trim().length === 0 || content.trim().length === 0){
-       res.status(400).json({message: 'Fields cannot be empty'}); 
-       return;
+    if (title.trim().length === 0 || author.trim().length === 0 || content.trim().length === 0) {
+      res.status(400).json({ message: 'Fields cannot be empty' });
+      return;
     }
 
     const data = await client.query('INSERT INTO articles (title, author, content, date) VALUES ($1, $2, $3, $4)',
@@ -120,9 +133,9 @@ app.post('/categories', async (req, res) => {
     const client = await pool.connect();
     const { title } = req.body;
 
-    if(title.trim().length === 0){
-       res.status(400).json({message: 'Fields cannot be empty'}); 
-       return;
+    if (title.trim().length === 0) {
+      res.status(400).json({ message: 'Fields cannot be empty' });
+      return;
     }
 
     const data = await client.query('INSERT INTO categories (title) VALUES ($1)', [title]);

@@ -1,11 +1,20 @@
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
-export async function retrieveArticle() {
+export async function retrieveArticles() {
   const response = await fetch('http://localhost:3001/articles', {
     method: 'GET'
   });
   const body = await response.text();
   const articles = body === "" ? {} : JSON.parse(body);
   return articles;
+}
+
+export async function retrieveArticle(id) {
+  const response = await fetch(`http://localhost:3001/articles/${id}`, {
+    method: 'GET'
+  });
+  const body = await response.text();
+  const article = body === "" ? {} : JSON.parse(body);
+  return article;
 }
 
 export async function addArticle(article) {

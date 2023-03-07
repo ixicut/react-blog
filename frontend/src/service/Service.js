@@ -1,11 +1,20 @@
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
-export async function retrieveArticle(page) {
+export async function retrieveArticles(page) {
   const response = await fetch(`http://localhost:3001/articles?offset=${page}`, {
     method: 'GET'
   });
   const body = await response.text();
   const articles = body === "" ? {} : JSON.parse(body);
   return articles;
+}
+
+export async function retrieveArticle(id) {
+  const response = await fetch(`http://localhost:3001/articles/${id}`, {
+    method: 'GET'
+  });
+  const body = await response.text();
+  const article = body === "" ? {} : JSON.parse(body);
+  return article;
 }
 
 export async function addArticle(article) {
@@ -46,8 +55,9 @@ export async function retrieveArticleCount() {
     method: 'GET'
   });
   const body = await response.text();
+  console.log(body);
   const articles = body === "" ? {} : JSON.parse(body);
-  return articles[0].ceil;
+  return articles[0].count;
 }
 
 //CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES

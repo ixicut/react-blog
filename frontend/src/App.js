@@ -1,5 +1,5 @@
 import './App.css';
-import { retrieveArticle, retrieveArticleCount } from './service/Service';
+import { retrieveArticles, retrieveArticleCount } from './service/Service';
 import { useEffect, useState } from 'react';
 import {
   Route,
@@ -16,7 +16,7 @@ function App() {
 
   async function fetchData(page) {
     setLoading(true);
-    const data = await retrieveArticle(page);
+    const data = await retrieveArticles(page);
     const pages = await retrieveArticleCount();
     setArticle(data);
     setPageCount(pages);

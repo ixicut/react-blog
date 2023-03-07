@@ -12,15 +12,21 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'blog',
-  password: 'petrov',
+  password: '123',
   port: 5432
 });
+
+const PAGE_LIMIT = 4;
 
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
 app.get('/articles', async (req, res) => {
   try {
     const client = await pool.connect();
-    const data = await client.query('SELECT * FROM articles');
+    let { offset } = req.query;
+
+    if(!Number.isInteger(parseInt(offset))) offset = 0;
+
+    const data = await client.query(`SELECT * FROM articles offset ${offset*PAGE_LIMIT} limit ${PAGE_LIMIT}`);
     res.send(data.rows);
     client.release();
   } catch (exception) {
@@ -89,6 +95,18 @@ app.put('/articles/:id', async (req, res) => {
       title, author, content, id
     ]);
     res.status(201).json({ message: `Article with id ${id} updated` });
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
+app.get('/articles/count', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query(`SELECT CEILING(COUNT(*)/${PAGE_LIMIT}.) as count FROM articles`);
+    res.send(data.rows);
     client.release();
   } catch (exception) {
     console.error(exception);

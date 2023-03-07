@@ -1,6 +1,6 @@
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
-export async function retrieveArticles() {
-  const response = await fetch('http://localhost:3001/articles', {
+export async function retrieveArticle(page) {
+  const response = await fetch(`http://localhost:3001/articles?offset=${page}`, {
     method: 'GET'
   });
   const body = await response.text();
@@ -48,6 +48,15 @@ export async function updateArticle(id, { article }) {
   const body = await response.text();
   const message = body === "" ? {} : JSON.parse(body);
   return message;
+}
+
+export async function retrieveArticleCount() {
+  const response = await fetch(`http://localhost:3001/articles/count`, {
+    method: 'GET'
+  });
+  const body = await response.text();
+  const articles = body === "" ? {} : JSON.parse(body);
+  return articles[0].count;
 }
 
 //CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES

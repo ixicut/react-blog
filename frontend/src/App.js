@@ -1,5 +1,5 @@
 import './App.css';
-import { retrieveArticles } from './service/Service';
+import { retrieveArticle, retrieveArticleCount } from './service/Service';
 import { useEffect, useState } from 'react';
 import {
   Route,
@@ -11,20 +11,26 @@ import ArticlePage from './components/ArticlePage/ArticlePage';
 
 function App() {
   const [articles, setArticle] = useState([]);
+  const [loading,setLoading] = useState(false);
+  const [pageCount,setPageCount] = useState(0);
 
-  async function fetchData() {
-    const data = await retrieveArticles();
+  async function fetchData(page) {
+    setLoading(true);
+    const data = await retrieveArticle(page);
+    const pages = await retrieveArticleCount();
     setArticle(data);
+    setPageCount(pages);
+    setLoading(false);
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData(0);
   }, []);
 
   return (
     <div>
     <Routes>
-      <Route exact path="/" element={<Main articles={articles}/>} />
+      <Route exact path="/" element={<Main articles={articles} updateCallback = {fetchData} count = {pageCount}/>} />
       <Route path="/add-article" element={<AddArticle onSave={fetchData} />} />
       <Route path="/:id" element={<ArticlePage/>}></Route>
     </Routes>

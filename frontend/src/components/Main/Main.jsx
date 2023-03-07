@@ -4,11 +4,11 @@ import Footer from "../Footer/Footer";
 import '../../bootstrap.min.css';
 import './Main.css';
 
-const Main = ({articles}) => {
+const Main = ({articles, updateCallback, count}) => {
     return (
         <div class = "wrapper background">
             <NavBar></NavBar>
-            <Body articles={articles}></Body>
+            <Body articles={articles} updateCallBack = {updateCallback} count = {count}></Body>
             <Footer></Footer> 
         </div>    
     );

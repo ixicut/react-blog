@@ -2,14 +2,9 @@ import { useEffect, useState } from 'react';
 import './PaginationPanel.css';
 import '../../bootstrap.min.css';
 
-const PaginationPanel = ({fetchCallBack}) => {
+const PaginationPanel = ({fetchCallBack,pageCount}) => {
 
     const [currentPage, setCurrentPage] = useState(0);
-
-    useEffect(() => {
-        const prevBtn = document.getElementById("pag-prev-btn");
-        currentPage === 0 ? prevBtn.disabled = true : prevBtn.disabled = false; 
-      }, [currentPage]);
 
     function onPrev() {
         const page = currentPage - 1;
@@ -26,6 +21,11 @@ const PaginationPanel = ({fetchCallBack}) => {
         const prevBtn = document.getElementById("pag-prev-btn");
         (pageIndex < 0) ? prevBtn.disabled = true : prevBtn.disabled = false;    
     }
+
+    useEffect(() => {
+        const prevBtn = document.getElementById("pag-prev-btn");
+        currentPage === 0 ? prevBtn.disabled = true : prevBtn.disabled = false; 
+      }, [currentPage]);
 
     return (
             <div class="col-12 text-end">

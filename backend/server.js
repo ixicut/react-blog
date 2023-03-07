@@ -89,6 +89,18 @@ app.put('/articles/:id', async (req, res) => {
   }
 });
 
+app.get('/articles/count', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const data = await client.query(`SELECT COUNT(*) FROM articles`);
+    res.send(data.rows);
+    client.release();
+  } catch (exception) {
+    console.error(exception);
+    res.send('Error ' + exception);
+  }
+});
+
 //CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES 
 
 app.get(`/categories`, async (req, res) => {

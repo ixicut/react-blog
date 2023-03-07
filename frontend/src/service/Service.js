@@ -41,6 +41,15 @@ export async function updateArticle(id, { article }) {
   return message;
 }
 
+export async function retrieveArticleCount() {
+  const response = await fetch(`http://localhost:3001/articles/count`, {
+    method: 'GET'
+  });
+  const body = await response.text();
+  const articles = body === "" ? {} : JSON.parse(body);
+  return articles[0];
+}
+
 //CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES
 
 export async function retrieveCategories() {

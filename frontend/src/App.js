@@ -10,20 +10,23 @@ import Main from './components/Main/Main';
 
 function App() {
   const [articles, setArticle] = useState([]);
+  const [loading,setLoading] = useState(false);
 
-  async function fetchData() {
-    const data = await retrieveArticle();
+  async function fetchData(page) {
+    setLoading(true);
+    const data = await retrieveArticle(page);
     setArticle(data);
+    setLoading(false);
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData(0);
   }, []);
 
   return (
     <div>
     <Routes>
-      <Route exact path="/" element={<Main articles={articles}/>} />
+      <Route exact path="/" element={<Main articles={articles} updateCallback = {fetchData}/>} />
       <Route path="/add-article" element={<AddArticle onSave={fetchData} />} />
     </Routes>
     </div>

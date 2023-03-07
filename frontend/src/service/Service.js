@@ -1,6 +1,6 @@
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
-export async function retrieveArticle() {
-  const response = await fetch('http://localhost:3001/articles', {
+export async function retrieveArticle(page) {
+  const response = await fetch(`http://localhost:3001/articles?offset=${page}`, {
     method: 'GET'
   });
   const body = await response.text();

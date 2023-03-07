@@ -48,7 +48,7 @@ const AddArticle = (props) => {
     return (
         <div class="wrapper background">
             <NavBar></NavBar>
-            <div class="container justify-content-center align-items-center mt-5">
+            <div class="container my-5 justify-content-center align-items-center">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <form onSubmit={saveArticle} class="bg-success p-5">

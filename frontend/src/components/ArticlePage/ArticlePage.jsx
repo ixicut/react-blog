@@ -3,7 +3,6 @@ import NavBar from "../NavBar/NavBar";
 import { useEffect, useState } from "react";
 import { retrieveArticle } from "../../service/Service";
 import { useParams } from "react-router-dom";
-import Article from "../Article/Article";
 import '../../bootstrap.min.css';
 
 const ArticlePage = (props) => {
@@ -23,18 +22,30 @@ const ArticlePage = (props) => {
 
     return (
         <>
-            <NavBar></NavBar>
-            <div className="d-flex justify-content-center align-items-center">
-                <Article id={article.id}
-                    title={article.title}
-                    author={article.author}
-                    content={article.content}
-                    date={article.date}
-                />
+            <div class="wrapper background">
+                <NavBar></NavBar>
+                <div key={article.id} className="container article-container">
+                    <div className="container article-container">
+                        <div className="row">
+                            <div className="col-xs-12 col-md-8">
+                                <div className="display-4 article-title">{article.title}</div>
+                                <div className="h4 article-info">{article.author}</div>
+                            </div>
+                            <div className="col-xs-12 col-md-4">
+                                <div className="text-md-right article-info">{article.date}</div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="article-content border py-3 px-2">{article.content}</div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+
+                <Footer></Footer>
             </div>
-
-            <Footer></Footer>
         </>
     );
 }

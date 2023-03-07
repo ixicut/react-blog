@@ -12,7 +12,7 @@ const Body = ({ articles, updateCallBack}) => {
                 <ArticleList articles={articles}></ArticleList>
             </div>
             <div class="row mb-3">
-                <PaginationPanel currentPage={11} fetchCallBack = {updateCallBack}></PaginationPanel>
+                <PaginationPanel fetchCallBack = {updateCallBack}></PaginationPanel>
             </div>             
         </div>
     );

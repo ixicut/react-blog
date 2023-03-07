@@ -47,7 +47,7 @@ export async function retrieveArticleCount() {
   });
   const body = await response.text();
   const articles = body === "" ? {} : JSON.parse(body);
-  return articles[0];
+  return articles[0].count;
 }
 
 //CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES

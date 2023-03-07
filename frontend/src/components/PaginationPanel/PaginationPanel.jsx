@@ -29,7 +29,7 @@ const PaginationPanel = ({fetchCallBack,pageCount}) => {
 
     return (
             <div class="col-12 text-end">
-                <span class="me-2">{currentPage + 1}</span>
+                <span class="me-2">{currentPage + 1} of {pageCount}</span>
                 <button id = "pag-prev-btn" type="button" class="btn btn-primary me-2" onClick={() => onPrev()}>Previous</button>
                 <button type="pagi-next-btn" class="btn btn-primary" onClick={() => onNext()}>Next</button>
             </div>

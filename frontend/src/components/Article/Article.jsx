@@ -1,6 +1,5 @@
 import "./Article.css"
 import React from 'react';
-import '../../bootstrap.min.css';
 
 const Article = (article) => {
   return (

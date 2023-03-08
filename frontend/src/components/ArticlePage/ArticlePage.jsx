@@ -3,7 +3,6 @@ import NavBar from "../NavBar/NavBar";
 import { useEffect, useState } from "react";
 import { retrieveArticle } from "../../service/Service";
 import { useParams } from "react-router-dom";
-import '../../bootstrap.min.css';
 
 const ArticlePage = (props) => {
 

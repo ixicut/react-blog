@@ -2,7 +2,6 @@ import ArticleList from '../ArticleList/ArticleList';
 import SideMenu from '../SideMenu/SideMenu';
 import PaginationPanel from '../PaginationPanel/PaginationPanel';
 import './Body.css';
-import '../../bootstrap.min.css';
 
 const Body = ({ articles, updateCallBack, count, loading}) => {
     return (

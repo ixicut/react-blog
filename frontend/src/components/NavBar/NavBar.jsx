@@ -2,8 +2,21 @@ import '../../bootstrap.min.css';
 import './NavBar.css';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import LoginModal from '../LoginDialog/LoginDialog';
 
 const NavBar = () => {
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClick = () => {
+        setShowModal(true);
+    };
+
+    const handleClose = () => {
+        setShowModal(false);
+    };
+
     return (
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark justify-content-between navbar-theme">
             <div class="container-fluid">
@@ -29,10 +42,7 @@ const NavBar = () => {
                     </ul>
                     <SearchBar></SearchBar>
                     <div class="r-p"></div>
-                    <Link to={"/login"}>
-                        <button class="btn btn-light">Login</button>
-                    </Link>
-
+                    <LoginModal></LoginModal>
                 </div>
             </div>
         </nav>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './PaginationPanel.css';
-import '../../bootstrap.min.css';
 
 const PaginationPanel = ({ fetchCallBack, pageCount, loading }) => {
 

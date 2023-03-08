@@ -1,5 +1,4 @@
 import './EmptyPlacer.css';
-import '../../bootstrap.min.css';
 
 const EmptyPlacer = ({ caption }) => {
     return (

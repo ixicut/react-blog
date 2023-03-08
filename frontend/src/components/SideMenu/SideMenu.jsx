@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import '../../bootstrap.min.css';
 import { retrieveCategories } from '../../service/Service';
 import './SideMenu.css';
 

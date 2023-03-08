@@ -41,7 +41,6 @@ const ArticlePage = (props) => {
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <Footer></Footer>

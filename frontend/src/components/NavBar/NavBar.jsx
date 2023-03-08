@@ -1,6 +1,7 @@
 import '../../bootstrap.min.css';
 import './NavBar.css';
 import SearchBar from '../SearchBar/SearchBar';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -25,10 +26,13 @@ const NavBar = () => {
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
-                    </ul>                   
+                    </ul>
                     <SearchBar></SearchBar>
-                    <div class = "r-p"></div>
-                    <button class="btn btn-light">Login</button>                 
+                    <div class="r-p"></div>
+                    <Link to={"/login"}>
+                        <button class="btn btn-light">Login</button>
+                    </Link>
+
                 </div>
             </div>
         </nav>

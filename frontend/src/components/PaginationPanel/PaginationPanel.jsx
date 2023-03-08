@@ -2,17 +2,19 @@ import { useEffect, useState } from 'react';
 import './PaginationPanel.css';
 import '../../bootstrap.min.css';
 
-const PaginationPanel = ({fetchCallBack,pageCount}) => {
+const PaginationPanel = ({fetchCallBack,pageCount, loading}) => {
 
     const [currentPage, setCurrentPage] = useState(0);
 
     function onPrev() {
+        document.documentElement.scrollTop = 0;
         const page = currentPage - 1;
         setCurrentPage(page);
         fetchCallBack(page);
     }
 
     function onNext() {
+        document.documentElement.scrollTop = 0;
         setCurrentPage(currentPage + 1);
         fetchCallBack(currentPage + 1);
     }
@@ -31,7 +33,7 @@ const PaginationPanel = ({fetchCallBack,pageCount}) => {
 
     return (
             <div class="col-12 text-end">
-                <span class="me-2">{currentPage + 1} of {pageCount}</span>
+                <span class="me-2">{currentPage + 1} of {loading ? "..." : pageCount}</span>
                 <button id = "pag-prev-btn" type="button" class="btn btn-primary me-2" onClick={() => onPrev()}>Previous</button>
                 <button id = "pag-next-btn" type="button" class="btn btn-primary" onClick={() => onNext()}>Next</button>
             </div>

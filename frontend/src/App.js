@@ -11,7 +11,7 @@ import ArticlePage from './components/ArticlePage/ArticlePage';
 
 function App() {
   const [articles, setArticle] = useState([]);
-  const [loading,setLoading] = useState(false);
+  const [loading,setLoading] = useState(true);
   const [pageCount,setPageCount] = useState(0);
 
   async function fetchData(page) {
@@ -30,7 +30,7 @@ function App() {
   return (
     <div>
     <Routes>
-      <Route exact path="/" element={<Main articles={articles} updateCallback = {fetchData} count = {pageCount}/>} />
+      <Route exact path="/" element={<Main articles={articles} updateCallback = {fetchData} count = {pageCount} loading = {loading}/>} />
       <Route path="/add-article" element={<AddArticle onSave={fetchData} />} />
       <Route path="/:id" element={<ArticlePage/>}></Route>
     </Routes>

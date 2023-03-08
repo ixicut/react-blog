@@ -4,7 +4,7 @@ import PaginationPanel from '../PaginationPanel/PaginationPanel';
 import './Body.css';
 import '../../bootstrap.min.css';
 
-const Body = ({ articles, updateCallBack, count}) => {
+const Body = ({ articles, updateCallBack, count, loading}) => {
     return (
         <div class="container-fluid">
             <div class="row">
@@ -12,7 +12,7 @@ const Body = ({ articles, updateCallBack, count}) => {
                 <ArticleList articles={articles}></ArticleList>
             </div>
             <div class="row mb-3">
-                <PaginationPanel fetchCallBack = {updateCallBack} pageCount = {count}></PaginationPanel>
+                <PaginationPanel fetchCallBack = {updateCallBack} pageCount = {count} loading = {loading}></PaginationPanel>
             </div>             
         </div>
     );

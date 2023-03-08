@@ -15,7 +15,7 @@ function arrayIsEmpty(array) {
     return false;
 }
 
-const ArticleList = ({ articles }) => {
+const ArticleList = ({ articles, loading }) => {
     return (
         <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
             <div
@@ -25,10 +25,15 @@ const ArticleList = ({ articles }) => {
             </div>
 
             <div class="row">
-                {
-                    arrayIsEmpty(articles) ? 
-                    <EmptyPlacer caption={"There is no blogs"}/>: 
-                            articles.map(article => (
+            {
+                loading ? <div class="d-flex justify-content-center align-items-center loading-cont-height">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only"></span>
+                    </div>
+                </div> :
+                    arrayIsEmpty(articles) ?
+                        <EmptyPlacer caption={"There is no blogs"} /> :
+                        articles.map(article => (
                             <Article id={article.id}
                                 title={article.title}
                                 author={article.author}
@@ -36,7 +41,8 @@ const ArticleList = ({ articles }) => {
                                 date={article.date}
                             />
                         ))
-                }
+                
+            }
             </div>
         </main>
     );

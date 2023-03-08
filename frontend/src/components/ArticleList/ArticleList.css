@@ -1,3 +1,7 @@
 .dashboard-gradient{
 background: linear-gradient(45deg,  black, black, white,black, black);
 }
+
+.loading-cont-height {
+    height: 50vh;
+}

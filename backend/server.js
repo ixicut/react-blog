@@ -16,7 +16,7 @@ const pool = new Pool({
   port: 5432
 });
 
-const PAGE_LIMIT = 4;
+const PAGE_LIMIT = 12;
 
 // ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES ARTICLES 
 app.get('/articles', async (req, res) => {

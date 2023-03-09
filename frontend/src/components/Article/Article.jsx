@@ -1,9 +1,14 @@
 import "./Article.css"
 import React from 'react';
+import { deleteArticle } from "../../service/Service";
 
-const Article = (article) => {
+const Article = ({ article, updateCallback }) => {
   var isLoggedIn = localStorage.getItem('isLoggedIn');
-  console.log(isLoggedIn);
+
+  async function onDelete() {
+    await deleteArticle(article.id);
+    updateCallback(0);
+  }
 
   return (
     <div key={article.id} class="col-md-6 col-lg-3 mb-4 d-flex">
@@ -20,7 +25,7 @@ const Article = (article) => {
             <div className="read-btn">Read more</div>
           </a>
           {(isLoggedIn === "true") &&
-            <button className="btn btn-danger">
+            <button className="btn btn-danger" onClick={onDelete}>
               Delete
             </button>
           }

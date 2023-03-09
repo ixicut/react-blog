@@ -16,6 +16,7 @@ function App() {
   const [pageCount, setPageCount] = useState(0);
 
   async function fetchData(page) {
+    console.log("RELOADED");
     setLoading(true);
     const data = await retrieveArticles(page);
     const pages = await retrieveArticleCount();

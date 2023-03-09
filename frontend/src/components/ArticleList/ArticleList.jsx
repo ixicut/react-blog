@@ -15,7 +15,7 @@ function arrayIsEmpty(array) {
     return false;
 }
 
-const ArticleList = ({ articles, loading }) => {
+const ArticleList = ({ articles, loading, updateCallback }) => {
     return (
         <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
             <div
@@ -33,12 +33,8 @@ const ArticleList = ({ articles, loading }) => {
                     </div> :
                         arrayIsEmpty(articles) ?
                             <EmptyPlacer caption={"There is no blogs"} /> :
-                            articles.map(article => (
-                                <Article id={article.id}
-                                    title={article.title}
-                                    author={article.author}
-                                    content={article.content}
-                                    date={article.date}
+                            articles.map(el => (
+                                <Article reloadCallback={updateCallback} article={el}
                                 />
                             ))
 

@@ -1,21 +1,13 @@
-import '../../bootstrap.min.css';
 import './NavBar.css';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import LoginModal from '../LoginDialog/LoginDialog';
+
 
 const NavBar = () => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-    const [showModal, setShowModal] = useState(false);
-
-    const handleClick = () => {
-        setShowModal(true);
-    };
-
-    const handleClose = () => {
-        setShowModal(false);
-    };
+    const [loggedIn, setLoggedIn] = useState(isLoggedIn);
 
     return (
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark justify-content-between navbar-theme">
@@ -42,7 +34,17 @@ const NavBar = () => {
                     </ul>
                     <SearchBar></SearchBar>
                     <div class="r-p"></div>
-                    <LoginModal></LoginModal>
+                    {loggedIn ?
+                        <button type="but" class="btn btn-primary" onClick={e => {
+                            e.preventDefault();
+                            localStorage.setItem('isLoggedIn', false);
+                            setLoggedIn(false);
+                        }}>Logout</button> :
+                        <Link to={"/login"} type="button" class="btn btn-primary">
+                            Login
+                        </Link>
+
+                    }
                 </div>
             </div>
         </nav>

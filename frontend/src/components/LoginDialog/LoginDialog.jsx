@@ -1,78 +1,58 @@
 import { useState } from "react";
-
+import Footer from "../Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const LoginModal = (props) => {
-    const [show, setShow] = useState(false);
-    const [email, setEmail] = useState('');
+    const history = useNavigate();
+    const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
-
-    const handleClose = () => setShow(false);
-
-    const handleSubmit = (event) => {
+    function onLogin(event) {
         event.preventDefault();
-        setEmail('');
-        setPassword('');
-        handleClose();
-    };
+        if (login === "admin" && password === "admin") {
+            localStorage.setItem('isLoggedIn', true);
+            history('/');
+        } else {
+            alert('LOGIN OR PASSWORD IS WRONG!');
+        }
+    }
 
     return (
         <>
-            <button class="btn btn-light" data-toggle="modal" data-target="#login">
-                Login
-            </button>
-            <div
-                className={`modal fade${show ? ' show' : ''}`}
-                tabIndex="-1"
-                role="dialog"
-                id="login"
-                aria-hidden={!show}
-                style={{ display: show ? 'block' : 'none' }}
-            >
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Login</h5>
-                            <button
-                                type="button"
-                                className="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                                onClick={handleClose}
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="email">Email address</label>
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        id="email"
-                                        placeholder="Enter email"
-                                        value={email}
-                                        onChange={(event) => setEmail(event.target.value)}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="password">Password</label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        placeholder="Password"
-                                        value={password}
-                                        onChange={(event) => setPassword(event.target.value)}
-                                    />
-                                </div>
-                                <button type="submit" className="btn btn-primary">
-                                    Login
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+            <div class="wrapper background">
+                <div className="container d-flex justify-content-center align-items-center vh-100">
+                    <form onSubmit={onLogin} className="form-signin">
+                        <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                        <label htmlFor="login" className="sr-only">
+                            Login
+                        </label>
+                        <input
+                            type="text"
+                            id="login"
+                            className="form-control"
+                            placeholder="Enter login"
+                            value={login}
+                            onChange={(e) => setLogin(e.target.value)}
+                            required
+                            autoFocus
+                        />
+                        <label htmlFor="password" className="sr-only">
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            className="form-control"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <button type="submit" className="btn btn-lg btn-primary btn-block">
+                            OK
+                        </button>
+                    </form>
                 </div>
+                <Footer></Footer>
             </div>
         </>
     );

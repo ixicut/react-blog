@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 
-const NavBar = () => {
+const NavBar = (props) => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
 
     const [loggedIn, setLoggedIn] = useState(isLoggedIn);
@@ -34,16 +34,16 @@ const NavBar = () => {
                     </ul>
                     <SearchBar></SearchBar>
                     <div class="r-p"></div>
-                    {loggedIn ?
+                    {(loggedIn === "true") ?
                         <button type="but" class="btn btn-primary" onClick={e => {
                             e.preventDefault();
                             localStorage.setItem('isLoggedIn', false);
                             setLoggedIn(false);
+                            window.location.reload();
                         }}>Logout</button> :
                         <Link to={"/login"} type="button" class="btn btn-primary">
                             Login
                         </Link>
-
                     }
                 </div>
             </div>

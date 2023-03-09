@@ -2,7 +2,8 @@ import "./Article.css"
 import React from 'react';
 
 const Article = (article) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  var isLoggedIn = localStorage.getItem('isLoggedIn');
+  console.log(isLoggedIn);
 
   return (
     <div key={article.id} class="col-md-6 col-lg-3 mb-4 d-flex">
@@ -18,7 +19,7 @@ const Article = (article) => {
           <a href={article.id} className="btn btn-success">
             <div className="read-btn">Read more</div>
           </a>
-          {isLoggedIn &&
+          {(isLoggedIn === "true") &&
             <button className="btn btn-danger">
               Delete
             </button>

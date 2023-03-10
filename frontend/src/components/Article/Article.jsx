@@ -5,7 +5,8 @@ import { deleteArticle } from "../../service/Service";
 const Article = ({ article, updateCallback }) => {
   var isLoggedIn = localStorage.getItem('isLoggedIn');
 
-  async function onDelete() {
+  async function onDelete(event) {
+    event.preventDefault();
     await deleteArticle(article.id);
     updateCallback(0);
   }
@@ -25,7 +26,7 @@ const Article = ({ article, updateCallback }) => {
             <div className="read-btn">Read more</div>
           </a>
           {(isLoggedIn === "true") &&
-            <button className="btn btn-danger" onClick={onDelete}>
+            <button className="btn btn-danger" onClick={(e) => onDelete(e)}>
               Delete
             </button>
           }

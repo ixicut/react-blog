@@ -18,17 +18,12 @@ const PaginationPanel = ({ fetchCallBack, pageCount, loading }) => {
         fetchCallBack(currentPage + 1);
     }
 
-    function checkIfLessZero(pageIndex) {
-        const prevBtn = document.getElementById("pag-prev-btn");
-        (pageIndex < 0) ? prevBtn.disabled = true : prevBtn.disabled = false;
-    }
-
     useEffect(() => {
         const prevBtn = document.getElementById("pag-prev-btn");
         const nextBtn = document.getElementById("pag-next-btn");
         currentPage === 0 ? prevBtn.disabled = true : prevBtn.disabled = false;
-        currentPage + 1 == pageCount ? nextBtn.disabled = true : nextBtn.disabled = false;
-    }, [currentPage]);
+        (currentPage + 1) == pageCount ? nextBtn.disabled = true : nextBtn.disabled = false;
+    }, [currentPage,pageCount]);
 
     return (
         <div class="col-12 text-end justify-content-center">

@@ -34,7 +34,7 @@ const ArticleList = ({ articles, loading, updateCallback }) => {
                         arrayIsEmpty(articles) ?
                             <EmptyPlacer caption={"There is no blogs"} /> :
                             articles.map(el => (
-                                <Article reloadCallback={updateCallback} article={el}
+                                <Article updateCallback={updateCallback} article={el}
                                 />
                             ))
 

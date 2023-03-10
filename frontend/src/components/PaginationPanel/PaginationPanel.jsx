@@ -1,29 +1,6 @@
-import { useEffect, useState } from 'react';
 import './PaginationPanel.css';
 
-const PaginationPanel = ({ fetchCallBack, pageCount, loading }) => {
-
-    const [currentPage, setCurrentPage] = useState(0);
-
-    function onPrev() {
-        document.documentElement.scrollTop = 0;
-        const page = currentPage - 1;
-        setCurrentPage(page);
-        fetchCallBack(page);
-    }
-
-    function onNext() {
-        document.documentElement.scrollTop = 0;
-        setCurrentPage(currentPage + 1);
-        fetchCallBack(currentPage + 1);
-    }
-
-    useEffect(() => {
-        const prevBtn = document.getElementById("pag-prev-btn");
-        const nextBtn = document.getElementById("pag-next-btn");
-        currentPage === 0 ? prevBtn.disabled = true : prevBtn.disabled = false;
-        (currentPage + 1) == pageCount ? nextBtn.disabled = true : nextBtn.disabled = false;
-    }, [currentPage,pageCount]);
+const PaginationPanel = ({ fetchCallBack, currentPage, pageCount, loading, onPrev,onNext}) => {
 
     return (
         <div class="col-12 text-end justify-content-center">

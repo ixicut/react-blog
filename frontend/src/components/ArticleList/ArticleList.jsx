@@ -15,7 +15,7 @@ function arrayIsEmpty(array) {
     return false;
 }
 
-const ArticleList = ({ articles, loading, updateCallback }) => {
+const ArticleList = ({ articles, loading, updateCallback, deleteCallBack, currentPage}) => {
     return (
         <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
             <div
@@ -34,7 +34,9 @@ const ArticleList = ({ articles, loading, updateCallback }) => {
                         arrayIsEmpty(articles) ?
                             <EmptyPlacer caption={"There is no blogs"} /> :
                             articles.map(el => (
-                                <Article updateCallback={updateCallback} article={el}
+                                <Article deleteCallBack={deleteCallBack} 
+                                article={el}
+                                currentPage = {currentPage}
                                 />
                             ))
 

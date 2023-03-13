@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { retrieveArticle } from "../../service/Service";
 import { useParams } from "react-router-dom";
 
-const ArticlePage = (props) => {
+const ArticlePage = () => {
 
     const [article, setArticle] = useState({});
     const { id } = useParams();

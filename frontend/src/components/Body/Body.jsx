@@ -1,9 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import ArticleList from '../ArticleList/ArticleList';
 import SideMenu from '../SideMenu/SideMenu';
 import PaginationPanel from '../PaginationPanel/PaginationPanel';
 import './Body.css';
 import { CountContext, RefreshCallbackContext } from '../../App';
+
+export const CurrentPageContext = createContext(0);
 
 const Body = () => {
 
@@ -33,20 +35,22 @@ const Body = () => {
     }, [currentPage, count]);
 
     return (
-        <div class="container-fluid">
-            <div class="row">
-                <SideMenu></SideMenu>
-                <ArticleList>
-                    currentPage= {currentPage}
-                </ArticleList>
+        <CurrentPageContext.Provider value={currentPage}>
+            <div class="container-fluid">
+                <div class="row">
+                    <SideMenu></SideMenu>
+                    <ArticleList>
+                        currentPage= {currentPage}
+                    </ArticleList>
+                </div>
+                <div class="row mb-3">
+                    <PaginationPanel
+                        currentPage={currentPage}
+                        onPrev={onPrev}
+                        onNext={onNext}></PaginationPanel>
+                </div>
             </div>
-            <div class="row mb-3">
-                <PaginationPanel
-                    currentPage={currentPage}
-                    onPrev={onPrev}
-                    onNext={onNext}></PaginationPanel>
-            </div>
-        </div>
+        </CurrentPageContext.Provider>
     );
 }
 

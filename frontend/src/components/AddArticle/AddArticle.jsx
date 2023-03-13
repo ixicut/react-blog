@@ -1,12 +1,14 @@
 import "./AddArticle.css"
 import { addArticle } from "../../service/Service";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import { RefreshCallbackContext } from "../../App";
 
-const AddArticle = (props) => {
+const AddArticle = () => {
     const history = useNavigate();
+    const onSave = useContext(RefreshCallbackContext);
 
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -40,7 +42,7 @@ const AddArticle = (props) => {
             content: content.toString(),
             date: getCurrentDate()
         }));
-        props.onSave();
+        onSave();
         history('/');
     }
 

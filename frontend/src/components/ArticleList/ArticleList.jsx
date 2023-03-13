@@ -4,6 +4,7 @@ import './ArticleList.css';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ArticlesContext, DeleteCallbackContext, LoadingContext } from "../../App";
+import { CurrentPageContext } from "../Body/Body";
 
 function arrayIsEmpty(array) {
     if (!Array.isArray(array)) {
@@ -20,6 +21,8 @@ function arrayIsEmpty(array) {
 const ArticleList = () => {
     const articles = useContext(ArticlesContext);
     const loading = useContext(LoadingContext);
+    const currentPage = useContext(CurrentPageContext);
+    const deleteCallBack = useContext(DeleteCallbackContext);
 
     return (
         <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
@@ -41,6 +44,8 @@ const ArticleList = () => {
                             articles.map(el => (
                                 <Article
                                     article={el}
+                                    currentPage={currentPage}
+                                    deleteCallBack={deleteCallBack}
                                 />
                             ))
 

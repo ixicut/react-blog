@@ -1,6 +1,6 @@
 import './App.css';
 import { retrieveArticles, retrieveArticleCount, deleteArticle } from './service/Service';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import {
   Route,
   Routes,
@@ -10,6 +10,11 @@ import Main from './components/Main/Main';
 import ArticlePage from './components/ArticlePage/ArticlePage';
 import LoginModal from './components/LoginDialog/LoginDialog';
 
+export const RefreshCallbackContext = createContext(() => { });
+export const DeleteCallbackContext = createContext(() => { });
+export const LoadingContext = createContext(null);
+export const ArticlesContext = createContext([]);
+export const CountContext = createContext(0);
 
 function App() {
   const [articles, setArticle] = useState([]);
@@ -26,7 +31,7 @@ function App() {
     setLoading(false);
   }
 
-  async function deleteData(id,currentPage) {
+  async function deleteData(id, currentPage) {
     await deleteArticle(id);
     fetchData(currentPage);
   }
@@ -37,12 +42,22 @@ function App() {
 
   return (
     <div>
-      <Routes>
-        <Route exact path="/" element={<Main articles={articles} updateCallback={fetchData} deleteCallBack={deleteData} count={pageCount} loading={loading} />} />
-        <Route path="/add-article" element={<AddArticle onSave={fetchData} />} />
-        <Route path="/:id" element={<ArticlePage />}></Route>
-        <Route path="/login" element={<LoginModal></LoginModal>}></Route>
-      </Routes>
+      <CountContext.Provider value={pageCount}>
+        <ArticlesContext.Provider value={articles}>
+          <LoadingContext.Provider value={loading}>
+            <RefreshCallbackContext.Provider value={fetchData}>
+              <DeleteCallbackContext.Provider value={deleteData}>
+                <Routes>
+                  <Route exact path="/" element={<Main />} />
+                  <Route path="/add-article" element={<AddArticle />} />
+                  <Route path="/:id" element={<ArticlePage />}></Route>
+                  <Route path="/login" element={<LoginModal></LoginModal>}></Route>
+                </Routes>
+              </DeleteCallbackContext.Provider>
+            </RefreshCallbackContext.Provider>
+          </LoadingContext.Provider>
+        </ArticlesContext.Provider>
+      </CountContext.Provider>
     </div>
   );
 }

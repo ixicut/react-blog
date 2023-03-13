@@ -13,7 +13,7 @@ RUN npm install
 # Copy the server code to the container
 COPY . .
 
-# Expose port 3000 for the server
+# Expose port 3001 for the server
 EXPOSE 3001
 
 # Start the server

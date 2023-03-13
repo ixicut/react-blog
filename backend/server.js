@@ -12,7 +12,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'blog',
-  password: '123',
+  password: 'petrov',
   port: 5432
 });
 
@@ -24,9 +24,9 @@ app.get('/articles', async (req, res) => {
     const client = await pool.connect();
     let { offset } = req.query;
 
-    if(!Number.isInteger(parseInt(offset))) offset = 0;
+    if (!Number.isInteger(parseInt(offset))) offset = 0;
 
-    const data = await client.query(`SELECT * FROM articles offset ${offset*PAGE_LIMIT} limit ${PAGE_LIMIT}`);
+    const data = await client.query(`SELECT * FROM articles offset ${offset * PAGE_LIMIT} limit ${PAGE_LIMIT}`);
     res.send(data.rows);
     client.release();
   } catch (exception) {
@@ -38,7 +38,7 @@ app.get('/articles', async (req, res) => {
 app.get('/articles/count', async (req, res) => {
   try {
     const client = await pool.connect();
-    const data = await client.query(`SELECT CEILING(COUNT(*)/${PAGE_LIMIT}.) as count FROM articles`);
+    const data = await client.query(`SELECT CEILING(COUNT(*) / ${PAGE_LIMIT}.) as count FROM articles`);
     res.send(data.rows);
     client.release();
   } catch (exception) {
@@ -106,7 +106,7 @@ app.put('/articles/:id', async (req, res) => {
     const data = await client.query('UPDATE articles SET title = $1, author = $2, content = $3 WHERE id = $4', [
       title, author, content, id
     ]);
-    res.status(201).json({ message: `Article with id ${id} updated` });
+    res.status(201).json({ message: `Article with id ${id} updated =` });
     client.release();
   } catch (exception) {
     console.error(exception);
@@ -116,7 +116,7 @@ app.put('/articles/:id', async (req, res) => {
 
 //CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES CATEGORIES 
 
-app.get(`/categories`, async (req, res) => {
+app.get('/categories', async (req, res) => {
   try {
     const client = await pool.connect();
     const data = await client.query('SELECT * FROM categories');
@@ -139,7 +139,6 @@ app.post('/categories', async (req, res) => {
     }
 
     const data = await client.query('INSERT INTO categories (title) VALUES ($1)', [title]);
-
     res.status(201).json({ message: `Category with id ${data.fields} created successfully` });
     client.release();
   } catch (exception) {

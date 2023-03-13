@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import { CountContext, LoadingContext } from '../../App';
 import './PaginationPanel.css';
 
-const PaginationPanel = ({ fetchCallBack, currentPage, pageCount, loading, onPrev,onNext}) => {
+const PaginationPanel = ({ currentPage, onPrev, onNext }) => {
+    const pageCount = useContext(CountContext);
+    const loading = useContext(LoadingContext);
 
     return (
         <div class="col-12 text-end justify-content-center">

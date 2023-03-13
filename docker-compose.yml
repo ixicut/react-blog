@@ -13,4 +13,15 @@ services:
       context: ./frontend
       dockerfile: /Dockerfile
     ports:
-      - "3002:3000"
+      - "3002:3002"
+
+  postgres:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_USER=blog-user
+      - POSTGRES_PASSWORD=blog-pass
+      - POSTGRES_DB= blog
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3003:3003"

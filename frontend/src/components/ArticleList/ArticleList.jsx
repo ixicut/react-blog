@@ -2,6 +2,8 @@ import Article from "../Article/Article";
 import EmptyPlacer from "../EmptyPlacer/EmptyPlace";
 import './ArticleList.css';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ArticlesContext, DeleteCallbackContext, LoadingContext } from "../../App";
 
 function arrayIsEmpty(array) {
     if (!Array.isArray(array)) {
@@ -15,7 +17,10 @@ function arrayIsEmpty(array) {
     return false;
 }
 
-const ArticleList = ({ articles, loading, updateCallback, deleteCallBack, currentPage}) => {
+const ArticleList = () => {
+    const articles = useContext(ArticlesContext);
+    const loading = useContext(LoadingContext);
+
     return (
         <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
             <div
@@ -34,9 +39,8 @@ const ArticleList = ({ articles, loading, updateCallback, deleteCallBack, curren
                         arrayIsEmpty(articles) ?
                             <EmptyPlacer caption={"There is no blogs"} /> :
                             articles.map(el => (
-                                <Article deleteCallBack={deleteCallBack} 
-                                article={el}
-                                currentPage = {currentPage}
+                                <Article
+                                    article={el}
                                 />
                             ))
 

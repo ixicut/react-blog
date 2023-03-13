@@ -9,11 +9,11 @@ app.use(express.json({ type: "/" }));
 app.use(bodyParser.json());
 
 const pool = new Pool({
-  user: 'postgres',
+  user: 'blog-user',
   host: 'localhost',
   database: 'blog',
-  password: '123',
-  port: 5432
+  password: 'blog-pass',
+  port: 3003
 });
 
 const PAGE_LIMIT = 4;
